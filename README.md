@@ -1,8 +1,38 @@
-<br /><br />
+## [Custom Steps - xsiadron]
+
+1.  Create .env in apiserver/.env:
+    - set **CORS_ALLOWED_ORIGINS** and **SECRET_KEY**
+2.  Convert http to https:
+
+    - Generate fullchain.pem and privkey.pem
+    - [In proxy] Add volume for: **/etc/letsencrypt:/etc/letsencrypt:ro**
+    - [In proxy] Add port for: **443:443**
+    - Split listeners in nginx/nginx.conf.template into two:
+
+    ```
+      server {
+                listen 80;
+                server_name domain.com;
+
+                return 301 https://$host$request_uri;
+            }
+
+      server {
+          listen 443 ssl;
+          server_name domain.com;
+
+          ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
+          ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
+          ssl_protocols TLSv1.2 TLSv1.3;
+          ssl_prefer_server_ciphers on;
+      }
+    ```
+
+    <br /><br />
 
 <p align="center">
 <a href="https://plane.so">
-  <img src="https://plane-marketing.s3.ap-south-1.amazonaws.com/plane-readme/plane_logo_.webp" alt="Plane Logo" width="70">
+<img src="https://plane-marketing.s3.ap-south-1.amazonaws.com/plane-readme/plane_logo_.webp" alt="Plane Logo" width="70">
 </a>
 </p>
 <h1 align="center"><b>Plane</b></h1>
@@ -47,14 +77,14 @@ Meet [Plane](https://dub.sh/plane-website-readme), an open-source project manage
 
 Getting started with Plane is simple. Choose the setup that works best for you:
 
-- **Plane Cloud**   
-Sign up for a free account on [Plane Cloud](https://app.plane.so)—it's the fastest way to get up and running without worrying about infrastructure.
+- **Plane Cloud**  
+  Sign up for a free account on [Plane Cloud](https://app.plane.so)—it's the fastest way to get up and running without worrying about infrastructure.
 
 - **Self-host Plane**  
-Prefer full control over your data and infrastructure? Install and run Plane on your own servers. Follow our detailed [deployment guides](https://developers.plane.so/self-hosting/overview) to get started.
+  Prefer full control over your data and infrastructure? Install and run Plane on your own servers. Follow our detailed [deployment guides](https://developers.plane.so/self-hosting/overview) to get started.
 
-| Installation methods | Docs link                                                                                                                                          |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Installation methods | Docs link                                                                                                                                                                               |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Docker               | [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://developers.plane.so/self-hosting/methods/docker-compose)         |
 | Kubernetes           | [![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)](https://developers.plane.so/self-hosting/methods/kubernetes) |
 
@@ -63,62 +93,64 @@ Prefer full control over your data and infrastructure? Install and run Plane on 
 ## 🌟 Features
 
 - **Issues**  
-Efficiently create and manage tasks with a robust rich text editor that supports file uploads. Enhance organization and tracking by adding sub-properties and referencing related issues.
+  Efficiently create and manage tasks with a robust rich text editor that supports file uploads. Enhance organization and tracking by adding sub-properties and referencing related issues.
 
-- **Cycles**   
-Maintain your team’s momentum with Cycles. Track progress effortlessly using burn-down charts and other insightful tools.
+- **Cycles**  
+  Maintain your team’s momentum with Cycles. Track progress effortlessly using burn-down charts and other insightful tools.
 
 - **Modules**  
-Simplify complex projects by dividing them into smaller, manageable modules. 
+  Simplify complex projects by dividing them into smaller, manageable modules.
 
 - **Views**  
-Customize your workflow by creating filters to display only the most relevant issues. Save and share these views with ease.
+  Customize your workflow by creating filters to display only the most relevant issues. Save and share these views with ease.
 
 - **Pages**  
-Capture and organize ideas using Plane Pages, complete with AI capabilities and a rich text editor. Format text, insert images, add hyperlinks, or convert your notes into actionable items.
+  Capture and organize ideas using Plane Pages, complete with AI capabilities and a rich text editor. Format text, insert images, add hyperlinks, or convert your notes into actionable items.
 
 - **Analytics**  
-Access real-time insights across all your Plane data. Visualize trends, remove blockers, and keep your projects moving forward.
+  Access real-time insights across all your Plane data. Visualize trends, remove blockers, and keep your projects moving forward.
 
 - **Drive** (_coming soon_): The drive helps you share documents, images, videos, or any other files that make sense to you or your team and align on the problem/solution.
-
 
 ## 🛠️ Local development
 
 ### Pre-requisites
+
 - Ensure Docker Engine is installed and running.
 
-###  Development setup
+### Development setup
+
 Setting up your local environment is simple and straightforward. Follow these steps to get started:
 
 1. Clone the repository:
-   ```
-   git clone https://github.com/makeplane/plane.git
-   ```
+    ```
+    git clone https://github.com/makeplane/plane.git
+    ```
 2. Navigate to the project folder:
-   ```
-   cd plane
-   ```
+    ```
+    cd plane
+    ```
 3. Create a new branch for your feature or fix:
-   ```
-   git checkout -b <feature-branch-name>
-   ```
+    ```
+    git checkout -b <feature-branch-name>
+    ```
 4. Run the setup script in the terminal:
-   ```
-   ./setup.sh
-   ```
+    ```
+    ./setup.sh
+    ```
 5. Open the project in an IDE such as VS Code.
 
 6. Review the `.env` files in the relevant folders. Refer to [Environment Setup](./ENV_SETUP.md) for details on the environment variables used.
 
 7. Start the services using Docker:
-   ```
-   docker compose -f docker-compose-local.yml up -d
-   ```
+    ```
+    docker compose -f docker-compose-local.yml up -d
+    ```
 
 That’s it! You’re all set to begin coding. Remember to refresh your browser if changes don’t auto-reload. Happy contributing! 🎉
 
 ## ⚙️ Built with
+
 [![Next JS](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)](https://www.djangoproject.com/)
 [![Node JS](https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white)](https://nodejs.org/en)
@@ -182,6 +214,7 @@ That’s it! You’re all set to begin coding. Remember to refresh your browser 
 </p>
 
 ## 📝 Documentation
+
 Explore Plane's [product documentation](https://docs.plane.so/) and [developer documentation](https://developers.plane.so/) to learn about features, setup, and usage.
 
 ## ❤️ Community
@@ -194,7 +227,7 @@ Feel free to ask questions, report bugs, participate in discussions, share ideas
 
 If you discover a security vulnerability in Plane, please report it responsibly instead of opening a public issue. We take all legitimate reports seriously and will investigate them promptly. See [Security policy](https://github.com/makeplane/plane/blob/master/SECURITY.md) for more info.
 
-To disclose any security issues, please email us at security@plane.so. 
+To disclose any security issues, please email us at security@plane.so.
 
 ## 🤝 Contributing
 
@@ -217,6 +250,6 @@ Please read [CONTRIBUTING.md](https://github.com/makeplane/plane/blob/master/CON
   <img src="https://contrib.rocks/image?repo=makeplane/plane" />
 </a>
 
-
 ## License
+
 This project is licensed under the [GNU Affero General Public License v3.0](https://github.com/makeplane/plane/blob/master/LICENSE.txt).

@@ -23,7 +23,11 @@ export type TEditorFontStyle = "sans-serif" | "serif" | "monospace";
 
 export type TEditorFontSize = "small-font" | "large-font";
 
+export type TEditorLineSpacing = "regular" | "small";
+
 export type TDisplayConfig = {
   fontStyle?: TEditorFontStyle;
   fontSize?: TEditorFontSize;
+  lineSpacing?: TEditorLineSpacing;
+  wideLayout?: boolean;
 };

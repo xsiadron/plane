@@ -350,7 +350,7 @@
   "couldnt_remove_the_project_from_favorites": "无法从收藏中移除项目。请重试。",
   "add_to_favorites": "添加到收藏",
   "remove_from_favorites": "从收藏中移除",
-  "publish_settings": "发布设置",
+  "publish_project": "发布项目",
   "publish": "发布",
   "copy_link": "复制链接",
   "leave_project": "离开项目",
@@ -501,6 +501,9 @@
   "re_generate_key": "重新生成密钥",
   "export": "导出",
   "member": "{count, plural, other{# 成员}}",
+  "new_password_must_be_different_from_old_password": "新密码必须不同于旧密码",
+  "edited": "已编辑",
+  "bot": "机器人",
 
   "project_view": {
     "sort_by": {
@@ -591,7 +594,7 @@
         "default": "您还没有任何最近项目。"
       },
       "filters": {
-        "all": "所有项目",
+        "all": "所有",
         "projects": "项目",
         "pages": "页面",
         "issues": "工作项"
@@ -631,6 +634,8 @@
     "states": "状态",
     "state": "状态",
     "state_groups": "状态组",
+    "state_group": "状态组",
+    "priorities": "优先级",
     "priority": "优先级",
     "team_project": "团队项目",
     "project": "项目",
@@ -639,12 +644,16 @@
     "module": "模块",
     "modules": "模块",
     "labels": "标签",
+    "label": "标签",
     "assignees": "负责人",
     "assignee": "负责人",
     "created_by": "创建者",
     "none": "无",
     "link": "链接",
+    "estimates": "估算",
     "estimate": "估算",
+    "created_at": "创建于",
+    "completed_at": "完成于",
     "layout": "布局",
     "filters": "筛选",
     "display": "显示",
@@ -687,13 +696,13 @@
     "add_more": "添加更多",
     "defaults": "默认值",
     "add_label": "添加标签",
-    "estimates": "估算",
     "customize_time_range": "自定义时间范围",
     "loading": "加载中",
     "attachments": "附件",
     "property": "属性",
     "properties": "属性",
     "parent": "父项",
+    "page": "页面",
     "remove": "移除",
     "archiving": "归档中",
     "archive": "归档",
@@ -825,8 +834,6 @@
     "select": "选择",
     "upgrade": "升级",
     "add_seats": "添加席位",
-    "label": "标签",
-    "priorities": "优先级",
     "projects": "项目",
     "workspace": "工作区",
     "workspaces": "工作区",
@@ -862,7 +869,9 @@
     "delete": "删除",
     "deleting": "删除中",
     "pending": "待处理",
-    "invite": "邀请"
+    "invite": "邀请",
+    "view": "查看",
+    "deactivated_user": "已停用用户"
   },
 
   "chart": {
@@ -980,7 +989,8 @@
         "sub_issue_count": "子工作项数量",
         "attachment_count": "附件数量",
         "created_on": "创建于",
-        "sub_issue": "子工作项"
+        "sub_issue": "子工作项",
+        "work_item_count": "工作项数量"
       },
       "extra": {
         "show_sub_issues": "显示子工作项",
@@ -1467,7 +1477,8 @@
             "max_length": "工作区名称不应超过80个字符"
           },
           "company_size": {
-            "required": "公司规模为必填项"
+            "required": "公司规模为必填项",
+            "select_a_range": "选择组织规模"
           }
         }
       },
@@ -1726,8 +1737,68 @@
       }
     },
     "estimates": {
+      "label": "估算",
       "title": "为我的项目启用估算",
-      "description": "它们有助于您传达团队的复杂性和工作量。"
+      "description": "它们有助于您传达团队的复杂性和工作量。",
+      "no_estimate": "无估算",
+      "new": "新估算系统",
+      "create": {
+        "custom": "自定义",
+        "start_from_scratch": "从头开始",
+        "choose_template": "选择模板",
+        "choose_estimate_system": "选择估算系统",
+        "enter_estimate_point": "输入估算点数",
+        "step": "步骤 {step} 共 {total}",
+        "label": "创建估算"
+      },
+      "toasts": {
+        "created": {
+          "success": {
+            "title": "已创建估算点数",
+            "message": "估算点数创建成功"
+          },
+          "error": {
+            "title": "无法创建估算点数",
+            "message": "无法创建新的估算点数，请重试"
+          }
+        },
+        "updated": {
+          "success": {
+            "title": "已更新估算",
+            "message": "您项目中的估算点数已更新"
+          },
+          "error": {
+            "title": "无法更新估算",
+            "message": "无法更新估算，请重试"
+          }
+        },
+        "enabled": {
+          "success": {
+            "title": "成功！",
+            "message": "已启用估算"
+          }
+        },
+        "disabled": {
+          "success": {
+            "title": "成功！",
+            "message": "已禁用估算"
+          },
+          "error": {
+            "title": "错误！",
+            "message": "无法禁用估算。请重试"
+          }
+        }
+      },
+      "validation": {
+        "min_length": "估算需要大于0。",
+        "unable_to_process": "我们无法处理您的请求，请重试。",
+        "numeric": "估算需要是数值。",
+        "character": "估算需要是字符值。",
+        "empty": "估算值不能为空。",
+        "already_exists": "估算值已存在。",
+        "unsaved_changes": "您有未保存的更改，请在点击完成前保存。",
+        "remove_empty": "估算不能为空。请在每个字段中输入值或删除没有值的字段。"
+      }
     },
     "automations": {
       "label": "自动化",
@@ -1767,6 +1838,12 @@
     "remove_filters_to_see_all_cycles": "移除筛选器以查看所有周期",
     "remove_search_criteria_to_see_all_cycles": "移除搜索条件以查看所有周期",
     "only_completed_cycles_can_be_archived": "只能归档已完成的周期",
+    "start_date": "开始日期",
+    "end_date": "结束日期",
+    "in_your_timezone": "在您的时区",
+    "transfer_work_items": "转移 {count} 工作项",
+    "date_range": "日期范围",
+    "add_date": "添加日期",
     "active_cycle": {
       "label": "活动周期",
       "progress": "进度",
@@ -2358,5 +2435,11 @@
   "module": {
     "label": "{count, plural, one {模块} other {模块}}",
     "no_module": "无模块"
+  },
+
+  "description_versions": {
+    "last_edited_by": "最后编辑者",
+    "previously_edited_by": "之前编辑者",
+    "edited_by": "编辑者"
   }
 }

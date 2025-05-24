@@ -5,32 +5,28 @@ import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine";
 import { autoScrollForElements } from "@atlaskit/pragmatic-drag-and-drop-auto-scroll/element";
 import { observer } from "mobx-react";
 import { useParams, usePathname } from "next/navigation";
-import { Briefcase, ChevronRight, Ellipsis, Plus } from "lucide-react";
+import { Briefcase, ChevronRight, Plus } from "lucide-react";
 import { Disclosure, Transition } from "@headlessui/react";
 import { EUserPermissions, EUserPermissionsLevel } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
 // ui
 import { Loader, TOAST_TYPE, Tooltip, setToast } from "@plane/ui";
+import { copyUrlToClipboard } from "@plane/utils";
 // components
 import { CreateProjectModal } from "@/components/project";
-import { SidebarNavItem } from "@/components/sidebar";
 import { SidebarProjectsListItem } from "@/components/workspace";
 // helpers
 import { cn } from "@/helpers/common.helper";
 import { orderJoinedProjects } from "@/helpers/project.helper";
-import { copyUrlToClipboard } from "@/helpers/string.helper";
 // hooks
 import { useAppTheme, useCommandPalette, useEventTracker, useProject, useUserPermissions } from "@/hooks/store";
-// plane web constants
 // plane web types
 import { TProject } from "@/plane-web/types";
 
 export const SidebarProjectsList: FC = observer(() => {
-  // get local storage data for isFavoriteProjectsListOpen and isAllProjectsListOpen
-  const isAllProjectsListOpenInLocalStorage = localStorage.getItem("isAllProjectsListOpen");
   // states
 
-  const [isAllProjectsListOpen, setIsAllProjectsListOpen] = useState(isAllProjectsListOpenInLocalStorage === "true");
+  const [isAllProjectsListOpen, setIsAllProjectsListOpen] = useState(true);
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false); // scroll animation state
   // refs

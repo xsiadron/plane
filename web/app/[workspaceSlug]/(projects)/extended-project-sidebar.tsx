@@ -8,13 +8,12 @@ import { Plus, Search } from "lucide-react";
 import { EUserPermissions, EUserPermissionsLevel } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
 import { setToast, TOAST_TYPE, Tooltip } from "@plane/ui";
-import { cn } from "@plane/utils";
+import { cn, copyUrlToClipboard } from "@plane/utils";
 // components
 import { CreateProjectModal } from "@/components/project";
 import { SidebarProjectsListItem } from "@/components/workspace";
 // hooks
 import { orderJoinedProjects } from "@/helpers/project.helper";
-import { copyUrlToClipboard } from "@/helpers/string.helper";
 import { useAppTheme, useProject, useUserPermissions } from "@/hooks/store";
 import useExtendedSidebarOutsideClickDetector from "@/hooks/use-extended-sidebar-overview-outside-click";
 import { TProject } from "@/plane-web/types";
@@ -108,7 +107,7 @@ export const ExtendedProjectSidebar = observer(() => {
       <div
         ref={extendedProjectSidebarRef}
         className={cn(
-          "fixed top-0 h-full z-[19] flex flex-col gap-2 w-[300px] transform transition-all duration-300 ease-in-out bg-custom-sidebar-background-100 border-r border-custom-sidebar-border-200 shadow-md",
+          "absolute top-0 h-full z-[19] flex flex-col gap-2 w-[300px] transform transition-all duration-300 ease-in-out bg-custom-sidebar-background-100 border-r border-custom-sidebar-border-200 shadow-md",
           {
             "translate-x-0 opacity-100 pointer-events-auto": extendedProjectSidebarCollapsed,
             "-translate-x-full opacity-0 pointer-events-none": !extendedProjectSidebarCollapsed,

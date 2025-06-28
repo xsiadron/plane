@@ -77,11 +77,11 @@ Meet [Plane](https://plane.so/), an open-source project management tool to track
 
 Getting started with Plane is simple. Choose the setup that works best for you:
 
-- **Plane Cloud**  
-  Sign up for a free account on [Plane Cloud](https://app.plane.so)—it's the fastest way to get up and running without worrying about infrastructure.
+- **Plane Cloud**
+Sign up for a free account on [Plane Cloud](https://app.plane.so)—it's the fastest way to get up and running without worrying about infrastructure.
 
-- **Self-host Plane**  
-  Prefer full control over your data and infrastructure? Install and run Plane on your own servers. Follow our detailed [deployment guides](https://developers.plane.so/self-hosting/overview) to get started.
+- **Self-host Plane**
+Prefer full control over your data and infrastructure? Install and run Plane on your own servers. Follow our detailed [deployment guides](https://developers.plane.so/self-hosting/overview) to get started.
 
 | Installation methods | Docs link                                                                                                                                                                               |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -92,62 +92,29 @@ Getting started with Plane is simple. Choose the setup that works best for you:
 
 ## 🌟 Features
 
-- **Issues**  
-  Efficiently create and manage tasks with a robust rich text editor that supports file uploads. Enhance organization and tracking by adding sub-properties and referencing related issues.
+- **Issues**
+Efficiently create and manage tasks with a robust rich text editor that supports file uploads. Enhance organization and tracking by adding sub-properties and referencing related issues.
 
-- **Cycles**  
-  Maintain your team’s momentum with Cycles. Track progress effortlessly using burn-down charts and other insightful tools.
+- **Cycles**
+Maintain your team’s momentum with Cycles. Track progress effortlessly using burn-down charts and other insightful tools.
 
-- **Modules**  
-  Simplify complex projects by dividing them into smaller, manageable modules.
+- **Modules**
+Simplify complex projects by dividing them into smaller, manageable modules.
 
-- **Views**  
-  Customize your workflow by creating filters to display only the most relevant issues. Save and share these views with ease.
+- **Views**
+Customize your workflow by creating filters to display only the most relevant issues. Save and share these views with ease.
 
-- **Pages**  
-  Capture and organize ideas using Plane Pages, complete with AI capabilities and a rich text editor. Format text, insert images, add hyperlinks, or convert your notes into actionable items.
+- **Pages**
+Capture and organize ideas using Plane Pages, complete with AI capabilities and a rich text editor. Format text, insert images, add hyperlinks, or convert your notes into actionable items.
 
-- **Analytics**  
-  Access real-time insights across all your Plane data. Visualize trends, remove blockers, and keep your projects moving forward.
+- **Analytics**
+Access real-time insights across all your Plane data. Visualize trends, remove blockers, and keep your projects moving forward.
 
 - **Drive** (_coming soon_): The drive helps you share documents, images, videos, or any other files that make sense to you or your team and align on the problem/solution.
 
 ## 🛠️ Local development
 
-### Pre-requisites
-
-- Ensure Docker Engine is installed and running.
-
-### Development setup
-
-Setting up your local environment is simple and straightforward. Follow these steps to get started:
-
-1. Clone the repository:
-    ```
-    git clone https://github.com/makeplane/plane.git
-    ```
-2. Navigate to the project folder:
-    ```
-    cd plane
-    ```
-3. Create a new branch for your feature or fix:
-    ```
-    git checkout -b <feature-branch-name>
-    ```
-4. Run the setup script in the terminal:
-    ```
-    ./setup.sh
-    ```
-5. Open the project in an IDE such as VS Code.
-
-6. Review the `.env` files in the relevant folders. Refer to [Environment Setup](./ENV_SETUP.md) for details on the environment variables used.
-
-7. Start the services using Docker:
-    ```
-    docker compose -f docker-compose-local.yml up -d
-    ```
-
-That’s it! You’re all set to begin coding. Remember to refresh your browser if changes don’t auto-reload. Happy contributing! 🎉
+See [CONTRIBUTING](./CONTRIBUTING.md)
 
 ## ⚙️ Built with
 

@@ -17,7 +17,7 @@ import { isIssueFilterActive } from "@/helpers/filter.helper";
 import { useLabel, useProjectState, useMember, useIssues } from "@/hooks/store";
 // plane web types
 import { TProject } from "@/plane-web/types";
-import { ProjectAnalyticsModal } from "../analytics";
+import { WorkItemsModal } from "../analytics/work-items/modal";
 
 type Props = {
   currentProjectDetails: TProject | undefined;
@@ -97,10 +97,11 @@ const HeaderFilters = observer((props: Props) => {
 
   return (
     <>
-      <ProjectAnalyticsModal
+      <WorkItemsModal
         isOpen={analyticsModal}
         onClose={() => setAnalyticsModal(false)}
         projectDetails={currentProjectDetails ?? undefined}
+        isEpic={storeType === EIssuesStoreType.EPIC}
       />
       <LayoutSelection
         layouts={[
